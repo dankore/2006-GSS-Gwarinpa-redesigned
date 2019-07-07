@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GOSAN 2006</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div class="page-wrap">
+      <h1>
+        2006 GSS Gwarinpa Set
+        <span class="design-by"
+          >Designed by <a href="https://homeawayfromhome.online">Adamu</a></span
+        >
+      </h1>
+      <div id="set-container"></div>
+    </div>
+
+    <script id="setTemplate" type="text/x-handlebars-template">
+      {{#each set}}
+      	<div class="set">
+      		<div class="photo-column">
+      			<img src="{{photo}}">
+      		</div>
+      		<div class="info-column">
+      			<h2>{{name}} <span class="name-of-class">({{class}})</span></h2>
+
+      			{{#if state}}
+      			<p>Lives in: {{state}}</p>
+      			{{else}}
+      			<p>Lives in: Unknown</p>
+      			{{/if}}
+
+      			{{#if occupation}}
+      			<p>Occupation: {{occupation}}</p>
+      			{{else}}
+      			<p>Occupation: Unknown</p>
+      			{{/if}}
+
+      			{{#if dob}}
+      			<p>
+      				Date of birth: {{dob}}
+      				<span class="design-by">[{{calculateUntillBirthDay dob}}]</span>
+      	</p>
+      			{{else}}
+      			<p>Date of birth: Unknown</p>
+      			{{/if}}
+      		</div>
+      	</div>
+      {{/each}}
+    </script>
+
+    <script src="src/index.js"></script>
+  </body>
+</html>
