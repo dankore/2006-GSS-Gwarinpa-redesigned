@@ -1,5 +1,3 @@
-// import Handlebars from "handlebars";
-
 const request = new XMLHttpRequest();
 request.open("GET", "https://dankore.github.io/gss-2006-json/2006.json");
 
