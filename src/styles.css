@@ -10,8 +10,15 @@ body {
 a {
   color: #999;
 }
-
-img {
+.heading-container {
+  display: flex;
+  align-items: center;
+}
+.heading-container > img {
+  width: 200px;
+  margin-right: 10px;
+}
+.photo-column > img {
   max-width: 100%;
 }
 body {
