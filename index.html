@@ -28,24 +28,24 @@
       			<h2>{{name}} <span class="name-of-class">({{class}})</span></h2>
 
       			{{#if state}}
-      			<p>Lives in: {{state}}</p>
+      			<p><span class="bold">Lives in</span>: {{state}}</p>
       			{{else}}
-      			<p>Lives in: Unknown</p>
+      			<p><span class="bold">Lives in</span>: Unknown</p>
       			{{/if}}
 
       			{{#if occupation}}
-      			<p>Occupation: {{occupation}}</p>
+      			<p><span class="bold">Occupation:</span> {{occupation}}</p>
       			{{else}}
-      			<p>Occupation: Unknown</p>
+      			<p><span class="bold">Occupation:</span> Unknown</p>
       			{{/if}}
 
       			{{#if dob}}
       			<p>
-      				Date of birth: {{dob}}
+      				<span class="bold">Date of birth:</span> {{dob}}
       				<span class="design-by">[{{calculateUntillBirthDay dob}}]</span>
-      	</p>
+      			</p>
       			{{else}}
-      			<p>Date of birth: Unknown</p>
+      			<p><span class="bold">Date of birth:</span> Unknown</p>
       			{{/if}}
       		</div>
       	</div>

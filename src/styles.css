@@ -37,7 +37,7 @@ p {
 }
 #set-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   grid-gap: 15px;
 }
 
@@ -54,18 +54,28 @@ p {
   font-size: 2.5rem;
 }
 
-.design-by,
+.design-by {
+  color: #999;
+  font-size: 1.2rem;
+}
 .set h2 .name-of-class {
   font-size: 1.45rem;
   color: #999;
 }
 
 .info-column {
-  width: 400px;
   box-sizing: border-box;
 }
 
-@media (max-width: 860px) {
+.bold {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+  .page-wrap {
+    width: 500px;
+  }
+  .photo-column,
   .info-column {
     width: auto;
   }
