@@ -85,3 +85,62 @@ Handlebars.registerHelper("calculateUntillBirthDay", function(dob) {
     return daysRemaining + " days to birthday";
   }
 });
+
+// Seach Button
+const search = document.getElementById("search");
+const searchDisplay = document.getElementById("search-display");
+
+// const endpoint =
+//   "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
+const endpoint = "https://dankore.github.io/gss-2006-json/2006-noset.json";
+const storeSearchContainer = [];
+
+fetch(endpoint)
+  .then(blob => blob.json())
+  .then(dataFromSearch => {
+    storeSearchContainer.push(...dataFromSearch);
+  });
+
+function findMatches(word, storeSearchContainer) {
+  return storeSearchContainer.filter(searchedItem => {
+    const regex = new RegExp(word, "gi");
+    return searchedItem.name.match(regex) || searchedItem.state.match(regex);
+  });
+}
+
+// Display matches
+function displayMatches() {
+  if (search.value === "") {
+    searchDisplay.innerHTML = `
+          <ul>
+               <li>Filter for a city or a state
+          </ul>
+      `;
+  } else {
+    const matchArray = findMatches(this.value, storeSearchContainer);
+    const html = matchArray
+      .map(place => {
+        const regex = new RegExp(this.value, "gi");
+        const cityName = place.name.replace(
+          regex,
+          `<span class="hl">${this.value}</span>`
+        );
+        const stateName = place.state.replace(
+          regex,
+          `<span class="hl">${this.value}</span>`
+        );
+        return `
+      <ul>
+          <li>
+           <span class="name"> ${cityName},  ${stateName} </span>
+          </li>
+      </ul>
+      `;
+      })
+      .join("");
+
+    searchDisplay.innerHTML = html;
+  }
+}
+
+search.addEventListener("input", displayMatches);
