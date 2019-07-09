@@ -111,11 +111,7 @@ function findMatches(word, storeSearchContainer) {
 // Display matches
 function displayMatches() {
   if (search.value === "") {
-    searchDisplay.innerHTML = `
-          <ul>
-               <li>Filter for a city or a state
-          </ul>
-      `;
+    searchDisplay.innerHTML = ` `;
   } else {
     const matchArray = findMatches(this.value, storeSearchContainer);
     const html = matchArray
@@ -132,7 +128,7 @@ function displayMatches() {
         return `
       <ul>
           <li>
-           <span class="name"> ${cityName},  ${stateName} </span>
+           <span class="name"> ${cityName},  lives in ${stateName} </span>
           </li>
       </ul>
       `;
