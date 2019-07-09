@@ -45,9 +45,8 @@ input#search {
   padding: 0;
   position: relative;
   width: 600px;
-  background-color: #1c8607;
+  background-color: #24bd09c5;
   color: white;
-  font-size: bold;
   position: absolute;
 }
 .photo-column > img {
@@ -110,8 +109,11 @@ p {
 .bold {
   font-weight: bold;
 }
-hl {
-  background: #00acee;
+.hl {
+  text-decoration: underline;
+}
+.returnedSearch {
+  font-size: 20px;
 }
 
 @media screen and (max-width: 600px) {

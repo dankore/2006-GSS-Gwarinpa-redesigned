@@ -115,20 +115,24 @@ function displayMatches() {
   } else {
     const matchArray = findMatches(this.value, storeSearchContainer);
     const html = matchArray
-      .map(place => {
+      .map(item => {
         const regex = new RegExp(this.value, "gi");
-        const cityName = place.name.replace(
+        const name = item.name.replace(
           regex,
           `<span class="hl">${this.value}</span>`
         );
-        const stateName = place.state.replace(
+        // const livesIn = item.state.replace(
+        //   regex,
+        //   `<span class="hl">${this.value}</span>`
+        // );
+        const classOf = item.class.replace(
           regex,
           `<span class="hl">${this.value}</span>`
         );
         return `
       <ul>
           <li>
-           <span class="name"> ${cityName},  lives in ${stateName} </span>
+           <span class="returnedSearch"> ${name}, ${classOf} </span>
           </li>
       </ul>
       `;
