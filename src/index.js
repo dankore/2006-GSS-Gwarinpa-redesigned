@@ -132,7 +132,7 @@ function displayMatches() {
         return `
       <ul>
           <li>
-           <span class="returnedSearch"> ${name}, ${classOf} </span>
+           <p class="returnedSearch"> ${name}, ${classOf} </p>
           </li>
       </ul>
       `;
