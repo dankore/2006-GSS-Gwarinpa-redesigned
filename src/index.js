@@ -108,12 +108,33 @@ function findMatches(word, storeSearchContainer) {
   });
 }
 
+// Cancel button toggle
+const cancelButton = document.querySelector(".cancel-button");
+const body = document.querySelector("html");
+body.addEventListener("click", toggle);
+search.addEventListener("input", toggle);
+cancelButton.addEventListener("click", toggle);
+
+function toggle(e) {
+  e.preventDefault();
+  if (search.value !== "") {
+    cancelButton.classList.add("active-cancel-button");
+    searchDisplay.innerHTML = ` `;
+  } else {
+    cancelButton.classList.remove("active-cancel-button");
+  }
+  // searchDisplay.classList.add("remove-displayed-search");
+  // cancelButton.classList.add("cancel-button");
+}
+
 // Display matches
+search.addEventListener("input", displayMatches);
 function displayMatches() {
   if (search.value === "") {
     searchDisplay.innerHTML = ` `;
   } else {
     const matchArray = findMatches(this.value, storeSearchContainer);
+
     const html = matchArray
       .map(item => {
         const regex = new RegExp(this.value, "gi");
@@ -138,9 +159,6 @@ function displayMatches() {
       `;
       })
       .join("");
-
     searchDisplay.innerHTML = html;
   }
 }
-
-search.addEventListener("input", displayMatches);
