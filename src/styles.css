@@ -9,9 +9,12 @@ body {
 }
 
 body {
+  /* background-color: rgb(182, 61, 61); */
   background-color: #ddd;
-  width: 80%;
+  width: 85%;
   margin: auto;
+  font-family: Helvetica, sans-serif;
+  padding: 30px 0;
 }
 a {
   color: #999;
@@ -24,8 +27,8 @@ input#search {
   text-align: center;
   outline: 0;
   border: 3px solid #1c8607;
-  width: 100%;
   position: relative;
+  width: 100%;
   top: 10px;
   z-index: 2;
   border-radius: 5px;
@@ -44,7 +47,7 @@ input#search {
   margin-top: 13px;
   padding: 0;
   position: relative;
-  width: 600px;
+  width: 69%;
   background-color: rgba(255, 255, 255, 0.87);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   position: absolute;
@@ -52,11 +55,6 @@ input#search {
 .photo-column > img {
   max-width: 100%;
 }
-body {
-  font-family: Helvetica, sans-serif;
-  padding: 30px 0;
-}
-
 h1 {
   margin-top: 0;
   font-size: 2.4em;
@@ -70,7 +68,7 @@ p {
 }
 
 .page-wrap {
-  max-width: 1024px;
+  width: 85%;
   padding: 0 16px;
   margin: 0 auto;
 }
@@ -113,7 +111,26 @@ p {
   text-decoration: underline;
 }
 .returnedSearch {
-  font-size: 20px;
+  font-size: 40px;
+  /* margin-top: 10px; */
+}
+.input-cancel-button {
+  display: flex;
+}
+
+.cancel-button {
+  float: right;
+  margin-left: 5px;
+  border: none;
+  background: transparent;
+  font-size: 30px;
+  display: none;
+}
+.active-cancel-button {
+  display: block;
+}
+.remove-displayed-search {
+  display: none;
 }
 
 @media screen and (max-width: 600px) {

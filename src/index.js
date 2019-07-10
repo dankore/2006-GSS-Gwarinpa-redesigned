@@ -108,12 +108,38 @@ function findMatches(word, storeSearchContainer) {
   });
 }
 
+// Cancel button toggle
+const cancelButton = document.querySelector(".cancel-button");
+const html = document.querySelector("html");
+html.addEventListener("click", toggle);
+html.addEventListener("click", emptySearchBox);
+search.addEventListener("input", toggle);
+cancelButton.addEventListener("click", toggle);
+cancelButton.addEventListener("click", emptySearchBox);
+
+function emptySearchBox() {
+  search.value = "";
+  cancelButton.classList.remove("active-cancel-button");
+}
+
+function toggle(e) {
+  e.preventDefault();
+  if (search.value !== "") {
+    cancelButton.classList.add("active-cancel-button");
+    searchDisplay.innerHTML = ` `;
+  } else {
+    cancelButton.classList.remove("active-cancel-button");
+  }
+}
+
 // Display matches
+search.addEventListener("input", displayMatches);
 function displayMatches() {
   if (search.value === "") {
     searchDisplay.innerHTML = ` `;
   } else {
     const matchArray = findMatches(this.value, storeSearchContainer);
+
     const html = matchArray
       .map(item => {
         const regex = new RegExp(this.value, "gi");
@@ -132,15 +158,12 @@ function displayMatches() {
         return `
       <ul>
           <li>
-           <span class="returnedSearch"> ${name}, ${classOf} </span>
+           <p class="returnedSearch"> ${name}, ${classOf} </p>
           </li>
       </ul>
       `;
       })
       .join("");
-
     searchDisplay.innerHTML = html;
   }
 }
-
-search.addEventListener("input", displayMatches);
