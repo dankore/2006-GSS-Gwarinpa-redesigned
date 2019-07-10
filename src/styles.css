@@ -122,7 +122,8 @@ p {
   float: right;
   margin-left: 5px;
   border: none;
-  font-size: 20px;
+  background: transparent;
+  font-size: 30px;
   display: none;
 }
 .active-cancel-button {

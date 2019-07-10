@@ -110,10 +110,17 @@ function findMatches(word, storeSearchContainer) {
 
 // Cancel button toggle
 const cancelButton = document.querySelector(".cancel-button");
-const body = document.querySelector("html");
-body.addEventListener("click", toggle);
+const html = document.querySelector("html");
+html.addEventListener("click", toggle);
+html.addEventListener("click", emptySearchBox);
 search.addEventListener("input", toggle);
 cancelButton.addEventListener("click", toggle);
+cancelButton.addEventListener("click", emptySearchBox);
+
+function emptySearchBox() {
+  search.value = "";
+  cancelButton.classList.remove("active-cancel-button");
+}
 
 function toggle(e) {
   e.preventDefault();
@@ -123,8 +130,6 @@ function toggle(e) {
   } else {
     cancelButton.classList.remove("active-cancel-button");
   }
-  // searchDisplay.classList.add("remove-displayed-search");
-  // cancelButton.classList.add("cancel-button");
 }
 
 // Display matches
