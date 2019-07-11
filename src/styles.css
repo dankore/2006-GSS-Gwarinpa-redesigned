@@ -145,7 +145,22 @@ p {
     width: auto;
   }
 }
-
+.tooltip {
+  position: relative;
+  display: inline-block;
+  z-index: 20;
+}
+.tooltip .tooltip-text {
+  visibility: hidden;
+  background-color: black;
+  color: white;
+  padding: 5px 8px;
+  border-radius: 6px;
+  text-align: center;
+}
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+}
 .clear-icon {
   visibility: hidden;
   border: 1px solid transparent;
