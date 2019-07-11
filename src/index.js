@@ -110,16 +110,29 @@ function findMatches(word, storeSearchContainer) {
 
 // Cancel button toggle
 const cancelButton = document.querySelector(".cancel-button");
-const html = document.querySelector("html");
-html.addEventListener("click", toggle);
-html.addEventListener("click", emptySearchBox);
+const body = document.querySelector("body");
+const clearIcon = document.querySelector(".clear-icon");
+
+// body.addEventListener("click", toggle);
+// body.addEventListener("click", emptySearchBox);
 search.addEventListener("input", toggle);
 cancelButton.addEventListener("click", toggle);
 cancelButton.addEventListener("click", emptySearchBox);
 
+clearIcon.addEventListener("click", emptySearchBoxByIcon);
+
+function emptySearchBoxByIcon() {
+  search.value = "";
+  if (search.value === "") {
+    cancelButton.classList.add("active-cancel-button");
+    clearIcon.classList.remove("clear-icon-active");
+  }
+}
+
 function emptySearchBox() {
   search.value = "";
   cancelButton.classList.remove("active-cancel-button");
+  clearIcon.classList.remove("clear-icon-active");
 }
 
 function toggle(e) {
@@ -127,8 +140,11 @@ function toggle(e) {
   if (search.value !== "") {
     cancelButton.classList.add("active-cancel-button");
     searchDisplay.innerHTML = ` `;
+    clearIcon.classList.add("clear-icon-active");
   } else {
     cancelButton.classList.remove("active-cancel-button");
+    clearIcon.classList.remove("clear-icon-active");
+    searchDisplay.innerHTML = ` `;
   }
 }
 
