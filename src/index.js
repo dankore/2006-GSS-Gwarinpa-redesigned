@@ -152,8 +152,9 @@ cancelButton.addEventListener("click", emptySearchBox);
 clearIcon.addEventListener("click", emptySearchBoxByIcon);
 
 // Display matches
+search.addEventListener("input", displayMatches);
 
-const displayMatches = () => {
+function displayMatches() {
   if (search.value === "") {
     searchDisplay.innerHTML = ` `;
   } else {
@@ -181,5 +182,4 @@ const displayMatches = () => {
       .join("");
     searchDisplay.innerHTML = html;
   }
-};
-search.addEventListener("input", displayMatches);
+}
