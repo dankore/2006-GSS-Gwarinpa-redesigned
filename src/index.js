@@ -5,6 +5,8 @@ request.onload = function() {
   if (request.status >= 200 && request.status < 400) {
     var data = JSON.parse(request.responseText);
     createHTML(data);
+    // console.log(data.set.sort((a, b) => (a.name > b.name) ? 1 : -1))
+    // console.log(Obj                                                                                                         ect.keys(data.set).sort((a, b) => data.set[b] - data.set[a]);
   } else {
     document
       .getElementById("set-container")
@@ -91,7 +93,6 @@ const search = document.getElementById("search");
 const searchDisplay = document.getElementById("search-display");
 
 // const endpoint =
-//   "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
 const endpoint = "https://dankore.github.io/gss-2006-json/2006-noset.json";
 const storeSearchContainer = [];
 
