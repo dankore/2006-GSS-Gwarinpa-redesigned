@@ -17,7 +17,16 @@ request.onload = function() {
   }
 };
 
-request.onerror = function() {
+// request.onerror = function() {
+//   document
+//     .getElementById("set-container")
+//     .insertAdjacentHTML(
+//       "beforeend",
+//       "Apologies! We connected to the server, but it returned an error. Refresh the page or try again later."
+//     );
+// };
+
+request.onerror = () => {
   document
     .getElementById("set-container")
     .insertAdjacentHTML(
@@ -111,7 +120,7 @@ function findMatches(word, storeSearchContainer) {
 
 // Cancel button toggle
 const cancelButton = document.querySelector(".cancel-button");
-const body = document.querySelector("body");
+// const body = document.querySelector("body");
 const clearIcon = document.querySelector(".clear-icon");
 
 // body.addEventListener("click", toggle);
@@ -122,6 +131,7 @@ cancelButton.addEventListener("click", emptySearchBox);
 
 clearIcon.addEventListener("click", emptySearchBoxByIcon);
 
+//Clear text in search box by clicking on icon
 function emptySearchBoxByIcon() {
   search.value = "";
   if (search.value === "") {
@@ -130,6 +140,7 @@ function emptySearchBoxByIcon() {
   }
 }
 
+//Clear text in search box by clicking on cancel
 function emptySearchBox() {
   search.value = "";
   cancelButton.classList.remove("active-cancel-button");
@@ -164,10 +175,6 @@ function displayMatches() {
           regex,
           `<span class="hl">${this.value}</span>`
         );
-        // const livesIn = item.state.replace(
-        //   regex,
-        //   `<span class="hl">${this.value}</span>`
-        // );
         const classOf = item.class.replace(
           regex,
           `<span class="hl">${this.value}</span>`
