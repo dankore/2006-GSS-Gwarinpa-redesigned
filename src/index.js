@@ -111,7 +111,7 @@ function findMatches(word, storeSearchContainer) {
 
 // Cancel button toggle
 const cancelButton = document.querySelector(".cancel-button");
-const body = document.querySelector("body");
+// const body = document.querySelector("body");
 const clearIcon = document.querySelector(".clear-icon");
 
 // body.addEventListener("click", toggle);
@@ -122,6 +122,7 @@ cancelButton.addEventListener("click", emptySearchBox);
 
 clearIcon.addEventListener("click", emptySearchBoxByIcon);
 
+//Clear text in search box by clicking on icon
 function emptySearchBoxByIcon() {
   search.value = "";
   if (search.value === "") {
@@ -130,14 +131,14 @@ function emptySearchBoxByIcon() {
   }
 }
 
+//Clear text in search box by clicking on cancel
 function emptySearchBox() {
   search.value = "";
   cancelButton.classList.remove("active-cancel-button");
   clearIcon.classList.remove("clear-icon-active");
 }
 
-function toggle(e) {
-  e.preventDefault();
+function toggle() {
   if (search.value !== "") {
     cancelButton.classList.add("active-cancel-button");
     searchDisplay.innerHTML = ` `;
@@ -164,10 +165,6 @@ function displayMatches() {
           regex,
           `<span class="hl">${this.value}</span>`
         );
-        // const livesIn = item.state.replace(
-        //   regex,
-        //   `<span class="hl">${this.value}</span>`
-        // );
         const classOf = item.class.replace(
           regex,
           `<span class="hl">${this.value}</span>`
