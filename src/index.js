@@ -17,7 +17,16 @@ request.onload = function() {
   }
 };
 
-request.onerror = function() {
+// request.onerror = function() {
+//   document
+//     .getElementById("set-container")
+//     .insertAdjacentHTML(
+//       "beforeend",
+//       "Apologies! We connected to the server, but it returned an error. Refresh the page or try again later."
+//     );
+// };
+
+request.onerror = () => {
   document
     .getElementById("set-container")
     .insertAdjacentHTML(
@@ -138,7 +147,8 @@ function emptySearchBox() {
   clearIcon.classList.remove("clear-icon-active");
 }
 
-function toggle() {
+function toggle(e) {
+  e.preventDefault();
   if (search.value !== "") {
     cancelButton.classList.add("active-cancel-button");
     searchDisplay.innerHTML = ` `;
