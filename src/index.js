@@ -1,7 +1,7 @@
 const request = new XMLHttpRequest();
 request.open("GET", "https://dankore.github.io/gss-2006-json/2006.json");
 
-request.onload = function() {
+request.onload = () => {
   if (request.status >= 200 && request.status < 400) {
     var data = JSON.parse(request.responseText);
     createHTML(data);
@@ -17,15 +17,6 @@ request.onload = function() {
   }
 };
 
-// request.onerror = function() {
-//   document
-//     .getElementById("set-container")
-//     .insertAdjacentHTML(
-//       "beforeend",
-//       "Apologies! We connected to the server, but it returned an error. Refresh the page or try again later."
-//     );
-// };
-
 request.onerror = () => {
   document
     .getElementById("set-container")
@@ -37,17 +28,18 @@ request.onerror = () => {
 
 request.send();
 
-function createHTML(setData) {
+const createHTML = setData => {
   const rawTemplate = document.getElementById("setTemplate").innerHTML;
   const compiledTemplate = Handlebars.compile(rawTemplate);
   const generatedHTML = compiledTemplate(setData);
 
   const setContainer = document.getElementById("set-container");
   setContainer.innerHTML = generatedHTML;
-}
+};
 
-Handlebars.registerHelper("calculateUntillBirthDay", function(dob) {
-  function daysIntoYear(date) {
+// Calculate number of days
+Handlebars.registerHelper("calculateUntillBirthDay", dob => {
+  const daysIntoYear = date => {
     return (
       (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) -
         Date.UTC(date.getFullYear(), 0, 0)) /
@@ -56,7 +48,7 @@ Handlebars.registerHelper("calculateUntillBirthDay", function(dob) {
       60 /
       1000
     );
-  }
+  };
 
   //Get input
   const arr = dob.split(" ");
@@ -111,43 +103,35 @@ fetch(endpoint)
     storeSearchContainer.push(...dataFromSearch);
   });
 
-function findMatches(word, storeSearchContainer) {
+const findMatches = (word, storeSearchContainer) => {
   return storeSearchContainer.filter(searchedItem => {
     const regex = new RegExp(word, "gi");
     return searchedItem.name.match(regex) || searchedItem.state.match(regex);
   });
-}
+};
 
 // Cancel button toggle
 const cancelButton = document.querySelector(".cancel-button");
 // const body = document.querySelector("body");
 const clearIcon = document.querySelector(".clear-icon");
 
-// body.addEventListener("click", toggle);
-// body.addEventListener("click", emptySearchBox);
-search.addEventListener("input", toggle);
-cancelButton.addEventListener("click", toggle);
-cancelButton.addEventListener("click", emptySearchBox);
-
-clearIcon.addEventListener("click", emptySearchBoxByIcon);
-
 //Clear text in search box by clicking on icon
-function emptySearchBoxByIcon() {
+const emptySearchBoxByIcon = () => {
   search.value = "";
   if (search.value === "") {
     cancelButton.classList.add("active-cancel-button");
     clearIcon.classList.remove("clear-icon-active");
   }
-}
+};
 
 //Clear text in search box by clicking on cancel
-function emptySearchBox() {
+const emptySearchBox = () => {
   search.value = "";
   cancelButton.classList.remove("active-cancel-button");
   clearIcon.classList.remove("clear-icon-active");
-}
+};
 
-function toggle(e) {
+const toggle = e => {
   e.preventDefault();
   if (search.value !== "") {
     cancelButton.classList.add("active-cancel-button");
@@ -158,11 +142,18 @@ function toggle(e) {
     clearIcon.classList.remove("clear-icon-active");
     searchDisplay.innerHTML = ` `;
   }
-}
+};
+// body.addEventListener("click", toggle);
+// body.addEventListener("click", emptySearchBox);
+search.addEventListener("input", toggle);
+cancelButton.addEventListener("click", toggle);
+cancelButton.addEventListener("click", emptySearchBox);
+
+clearIcon.addEventListener("click", emptySearchBoxByIcon);
 
 // Display matches
-search.addEventListener("input", displayMatches);
-function displayMatches() {
+
+const displayMatches = () => {
   if (search.value === "") {
     searchDisplay.innerHTML = ` `;
   } else {
@@ -190,4 +181,5 @@ function displayMatches() {
       .join("");
     searchDisplay.innerHTML = html;
   }
-}
+};
+search.addEventListener("input", displayMatches);
