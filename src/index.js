@@ -94,15 +94,15 @@ Handlebars.registerHelper("calculateUntillBirthDay", dob => {
 const search = document.getElementById("search");
 const searchDisplay = document.getElementById("search-display");
 
-// const endpoint =
-const endpoint = "https://dankore.github.io/gss-2006-json/2006-noset.json";
+// Begin of search results
 const storeSearchContainer = [];
+const searchR = new XMLHttpRequest();
 
-fetch(endpoint)
-  .then(blob => blob.json())
-  .then(dataFromSearch => {
-    storeSearchContainer.push(...dataFromSearch);
-  });
+searchR.open("GET", "https://dankore.github.io/gss-2006-json/2006.json");
+searchR.onload = () => {
+  var fromSearch = JSON.parse(searchR.responseText);
+  storeSearchContainer.push(...fromSearch.set);
+};
 
 const findMatches = (word, storeSearchContainer) => {
   return storeSearchContainer.filter(searchedItem => {
@@ -110,6 +110,25 @@ const findMatches = (word, storeSearchContainer) => {
     return searchedItem.name.match(regex) || searchedItem.state.match(regex);
   });
 };
+searchR.send();
+// End of search results
+
+// // const endpoint =
+// const endpoint = "https://dankore.github.io/gss-2006-json/2006-noset.json";
+// const storeSearchContainer = [];
+
+// fetch(endpoint)
+//   .then(blob => blob.json())
+//   .then(dataFromSearch => {
+//     storeSearchContainer.push(...dataFromSearch);
+//   });
+
+// const findMatches = (word, storeSearchContainer) => {
+//   return storeSearchContainer.filter(searchedItem => {
+//     const regex = new RegExp(word, "gi");
+//     return searchedItem.name.match(regex) || searchedItem.state.match(regex);
+//   });
+// };
 
 // Cancel button toggle
 const cancelButton = document.querySelector(".cancel-button");
