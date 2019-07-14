@@ -20,7 +20,7 @@ a {
   color: #999;
 }
 .form {
-  margin: 50px auto;
+  margin: auto;
 }
 #search {
   margin: 0;
@@ -30,7 +30,7 @@ a {
   position: relative;
   width: 100%;
   min-height: 100px;
-  top: 10px;
+  /* top: 10px; */
   z-index: 1;
   border-radius: 5px;
   font-size: 40px;
@@ -39,6 +39,8 @@ a {
 .heading-container {
   display: flex;
   align-items: center;
+  padding: 0 0 100px 0;
+  z-index: 3;
 }
 .heading-container > img {
   width: 100px;
@@ -74,6 +76,7 @@ p {
   margin: 0 auto;
 }
 #set-container {
+  margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   grid-gap: 15px;
@@ -95,6 +98,7 @@ p {
 .design-by {
   color: #999;
   font-size: 1rem;
+  z-index: 10;
 }
 .set h2 .name-of-class {
   font-size: 1.45rem;
