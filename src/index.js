@@ -130,7 +130,7 @@ searchR.send();
 
 // Cancel button toggle
 const cancelButton = document.querySelector(".cancel-button");
-// const body = document.querySelector("body");
+const heading = document.querySelector(".heading-container");
 const clearIcon = document.querySelector(".clear-icon");
 
 //Clear text in search box by clicking on icon
@@ -161,8 +161,9 @@ const toggle = e => {
     searchDisplay.innerHTML = ` `;
   }
 };
-// search.addEventListener("blur", toggle);
-// search.addEventListener("blur", emptySearchBox);
+
+heading.addEventListener("mousedown", toggle);
+heading.addEventListener("mousedown", emptySearchBox);
 search.addEventListener("input", toggle);
 cancelButton.addEventListener("click", toggle);
 cancelButton.addEventListener("click", emptySearchBox);
