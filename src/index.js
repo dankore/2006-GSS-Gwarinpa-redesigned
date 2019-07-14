@@ -99,9 +99,7 @@ const endpoint = "https://dankore.github.io/gss-2006-json/2006-noset.json";
 const storeSearchContainer = [];
 
 fetch(endpoint)
-  .then(blob => {
-    blob.json();
-  })
+  .then(blob => blob.json())
   .then(dataFromSearch => {
     storeSearchContainer.push(...dataFromSearch);
   });
