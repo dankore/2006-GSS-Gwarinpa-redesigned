@@ -5,6 +5,7 @@ request.onload = () => {
   if (request.status >= 200 && request.status < 400) {
     var data = JSON.parse(request.responseText);
     createHTML(data);
+    // console.log(data.set);
     // console.log(data.set.sort((a, b) => (a.name > b.name) ? 1 : -1))
     // console.log(Obj                                                                                                         ect.keys(data.set).sort((a, b) => data.set[b] - data.set[a]);
   } else {
@@ -98,7 +99,9 @@ const endpoint = "https://dankore.github.io/gss-2006-json/2006-noset.json";
 const storeSearchContainer = [];
 
 fetch(endpoint)
-  .then(blob => blob.json())
+  .then(blob => {
+    blob.json();
+  })
   .then(dataFromSearch => {
     storeSearchContainer.push(...dataFromSearch);
   });
@@ -143,8 +146,8 @@ const toggle = e => {
     searchDisplay.innerHTML = ` `;
   }
 };
-// body.addEventListener("click", toggle);
-// body.addEventListener("click", emptySearchBox);
+// search.addEventListener("blur", toggle);
+// search.addEventListener("blur", emptySearchBox);
 search.addEventListener("input", toggle);
 cancelButton.addEventListener("click", toggle);
 cancelButton.addEventListener("click", emptySearchBox);
