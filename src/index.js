@@ -4,10 +4,8 @@ request.open("GET", "https://dankore.github.io/gss-2006-json/2006.json");
 request.onload = () => {
   if (request.status >= 200 && request.status < 400) {
     var data = JSON.parse(request.responseText);
+    data.set.sort((a, b) => a.name > b.name); //Did not know I could that! Accidental discovery
     createHTML(data);
-    // console.log(data.set);
-    // console.log(data.set.sort((a, b) => (a.name > b.name) ? 1 : -1))
-    // console.log(Obj                                                                                                         ect.keys(data.set).sort((a, b) => data.set[b] - data.set[a]);
   } else {
     document
       .getElementById("set-container")
