@@ -21,7 +21,7 @@ request.onerror = () => {
     .getElementById("set-container")
     .insertAdjacentHTML(
       "beforeend",
-      "Apologies! We connected to the server, but it returned an error. Refresh the page or try again later."
+      "Apologies! We connected to the server, but it returned an error. Check your internet connection and refresh the page or try again later."
     );
 };
 
